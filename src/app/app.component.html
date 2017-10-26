@@ -1,0 +1,55 @@
+<div class="container-fluid">
+   <comp-duallist 
+    [search]=true 
+    [range]=true 
+    [initiallySorted]=true 
+    [sort]=true
+    [sortFnAsc]="customFnAscBnd" 
+    [sortFnDesc]="customFnDescBnd" 
+    [allowMove]=true 
+    [addToLeft]=true 
+    [dataType]="'CUSTOM'" 
+    [selectColor]="'skyblue'" 
+    [unselectColor]="'aliceblue'" 
+    [itemColor]="'brown'" 
+    [icon]="'fa fa-asterisk'" 
+    [iconColor]="'orange'" 
+    [availableListName]="'Available'" 
+    [availableInput]="[{firstName:'steve', lastName:'john', email:'333@ex.com'}, {firstName:'bob', lastName:'mathew', email:'222@ex.com'}, {firstName:'mary', 'lastName':'stew', email:'111@ex.com'}]"  
+    [selectedListName]="'Selected'" 
+    [selectedInput]="[{firstName:'steve', lastName:'john', email:'111@ex.com'}, {firstName:'bob', lastName:'mathew', email:'222@ex.com'}, {firstName:'mary', 'lastName':'stew', email:'333@ex.com'}]"  
+    [height]="'200px'" 
+    [addNewHint]="'Add'" 
+    [textChoice]="'Search'" 
+    [rangeChoice]="'Range'" 
+    [textLabel]="'Text'" 
+    [rangeLabel]="'Range'" 
+    [textHint]="'Search...'" 
+    [rangeStartHint]="'Start...'" 
+    [rangeEndHint]="'End...'" 
+   ></comp-duallist> 
+
+  <!-- <comp-duallist 
+   [search]=true 
+   [range]=true 
+   [initiallySorted]=true 
+   [sort]=true
+   [allowMove]=true 
+   [addToLeft]=true 
+   [dataType]="'STRING'" 
+   [selectColor]="'skyblue'" 
+   [unselectColor]="'aliceblue'" 
+   [itemColor]="'brown'" 
+   [icon]="'fa fa-asterisk'" 
+   [iconColor]="'orange'" 
+   [availableListName]="'Available'" 
+   [availableInput]="['str1', 'str2', 'str3']"  
+   [selectedListName]="'Selected'" 
+   [selectedInput]="['str4', 'str5', 'str6']"  
+   [height]="'200px'" 
+  ></comp-duallist> -->
+
+<!-- <comp-duallist 
+ ></comp-duallist>  -->
+
+</div>

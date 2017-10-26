@@ -1,0 +1,32 @@
+.div-border {
+    border-style: outset;
+    border-width: 1px;
+}
+.div-border-upper {
+    border-top: none!important;
+}
+.align-right {
+    float: right;
+}
+.vertical-spacing-5 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.buffer-padding {
+    padding: 1.1rem;
+}
+.move-button {
+    line-height: 0.5;
+    border-width: 1px;
+    border-color: darkgray;
+}
+.no-right-pad {
+    padding-right: 0;
+}
+.button-border {
+    border-width: 3px;
+    border-color: darkgray;
+}
+.value-span {
+    word-wrap:break-word;
+}

@@ -1,0 +1,116 @@
+<div *ngIf="addToList" class="row">
+    <div class="col-lg-12 col-md-12 div-border">
+        <input *ngIf="dataType==='STRING' || dataType==='CUSTOM'" type="text" ref-addnew placeholder={{addNewHint}}>
+        <input *ngIf="dataType==='NUMBER'" type="number" ref-addnew placeholder={{addNewHint}}>
+        <button type="button" class="btn btn-default" (click)="add(addnew?.nativeElement?.value); addnew.nativeElement.value=null;">
+            <span>
+                <i class="fa fa-plus-square" aria-hidden="true">
+                </i>
+            </span>
+        </button>
+    </div>
+</div>
+<div *ngIf="!addToList" class="row">
+    <div class="col-lg-12 col-md-12 div-border buffer-padding">
+    </div>
+</div>
+<div *ngIf="searchOrRange" class="row justify-content-left">
+    <div class="col-lg-8 col-md-8 text-left">
+        <div *ngIf="search && range" class="btn-group" ngbRadioGroup name="radioBasic" [(ngModel)]="searchOrRange">
+            <label ngbButtonLabel class="btn-primary btn-sm">
+                <input ngbButton type="radio" value="search"> {{textChoice}}
+                <span>
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+            </label>
+            <label ngbButtonLabel class="btn-primary btn-sm">
+                <input ngbButton type="radio" value="range"> {{rangeChoice}}
+                <span>
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+            </label>
+        </div>
+    </div>
+</div>
+<div *ngIf="searchOrRange ==='search' " class="row justify-content-left">
+    <div class="col-lg-12 col-md-12 vertical-spacing-5 div-border div-border-upper">
+        {{textLabel}}
+        <input *ngIf="dataType === 'STRING' || dataType === 'CUSTOM'" type="text" class="vertical-spacing-5" ref-searchL placeholder={{textHint}} />
+        <input *ngIf="dataType === 'NUMBER'" type="number" class="vertical-spacing-5" ref-searchL placeholder={{textHint}} />
+        <button type="button" class="button-border" (click)="inputItemList.search(searchL?.nativeElement?.value)">
+            <span>
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </span>
+        </button>
+        <button class="button-border" (click)="inputItemList.clearSearch(searchL?.nativeElement)">
+            <span>
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </span>
+        </button>
+    </div>
+</div>
+<div *ngIf="searchOrRange ==='range' " class="row justify-content-left">
+    <div class="col-lg-12 col-md-12 vertical-spacing-5 div-border div-border-upper">
+        {{rangeLabel}}
+        <input type="number" min="0" max="{{inputItemList.completeList.length-1}}" class="vertical-spacing-5" ref-searchLstart placeholder={{rangeStartHint}}
+        />
+        <input type="number" min="0" max="{{inputItemList.completeList.length-1}}" class="vertical-spacing-5" ref-searchLend placeholder={{rangeEndHint}}
+        />
+        <button type="button" class="button-border" (click)="inputItemList.range(searchLstart.value, searchLend.value)">
+            <span>
+                <i class="fa fa-arrows-h" aria-hidden="true"></i>
+            </span>
+        </button>
+        <button class="button-border" (click)="inputItemList.clearRange(searchLstart, searchLend)">
+            <span>
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </span>
+        </button>
+    </div>
+</div>
+<div class="row justify-content-left">
+    <div class="col-10 div-border">
+        <app-listheader [name]="inputItemList.name" [displayCount]="inputItemList.displayCount()" [totalCount]="inputItemList.completeList.length"></app-listheader>
+    </div>
+    <div *ngIf="sort" [style.background]="unselectColor" class="align-right div-border">
+        <span (click)="inputItemList.sortAsc()">
+            <i class="fa fa-sort-up" aria-hidden="true"></i>
+        </span>
+        <span>&nbsp;</span>
+        <span (click)="inputItemList.sortDesc()">
+            <i class="fa fa-sort-desc" aria-hidden="true"></i>
+        </span>
+    </div>
+</div>
+<div [ngStyle]="{'max-height': height, 'overflow': 'auto'}">
+    <div *ngFor="let item of inputItemList.completeList; let idx=index;" class="row justify-content-left">
+        <div *ngIf="item.show" class="col-1 div-border">
+            {{idx}}
+        </div>
+
+        <div *ngIf="item.show" class="col-10 div-border no-right-pad" [style.background]=item.backgroundColor [style.color]=item.textColor
+            (click)="inputItemList.updateSelection(item)">
+            <button *ngIf="item.show && idx !== 0" type="button" class="btn btn-default btn-sm move-button" (click)="moveUp(idx)">
+                <span>
+                    <i class="fa fa-angle-up" aria-hidden="true"></i>
+                </span>
+            </button>
+            <span *ngIf="item.show && idx === 0" style="padding-left:30px;"></span>
+            <button *ngIf="item.show && idx !== (inputItemList.completeList.length-1) " type="button" class="btn btn-default btn-sm move-button"
+                (click)="moveDown(idx)">
+                <span>
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </span>
+            </button>
+            <span *ngIf="item.show && idx === (inputItemList.completeList.length-1)" style="padding-left:30px;"></span>
+            <i *ngIf="item.icon" [style.color]=item.iconColor class="{{item.icon}}" aria-hidden="true"></i>
+            <span *ngIf="dataType !== 'NUMBER'" class="value-span">{{item.value|json}}</span>
+            <span *ngIf="dataType === 'NUMBER'" class="value-span">{{item.value}}</span>
+            <button *ngIf="addToList" class="button-border align-right" (click)="remove(item)">
+                <span>
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+    </div>
+</div>

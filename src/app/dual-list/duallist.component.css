@@ -1,0 +1,32 @@
+
+.div-border {
+    border-style: outset;
+    border-width: 1px;
+}
+.align-right {
+    float: right;
+}
+.buffer-padding {
+    padding: 1.1rem;
+}
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+    .sm-spacing {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+/* Tablets in portrait */
+@media only screen and (min-width : 768px) and (max-width : 992px) {
+    .sm-spacing {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+    .sm-spacing {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}

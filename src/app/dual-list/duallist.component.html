@@ -1,0 +1,117 @@
+<div class="row justify-content-center">
+    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 div-border">
+        <app-listpart #available
+                      [search]="search"
+                      [range]="range"
+                      [initiallySorted]="initiallySorted"
+                      [sort]="sort" 
+                      [sortFnAsc]="sortFnAsc"
+                      [sortFnDesc]="sortFnDesc"
+                      [allowMove]="allowMove"
+                      [addToList]="addToLeft"
+                      [dataType]="dataType"
+                      [selectColor]="selectColor"
+                      [unselectColor]="unselectColor"
+                      [itemColor]="itemColor"
+                      [icon]="icon"
+                      [iconColor]="iconColor"
+                      [listName]="availableListName"
+                      [inputData]="availableInput"
+                      [height]="height"
+                      [addNewHint]="addNewHint" 
+                      [textChoice]="textChoice" 
+                      [rangeChoice]="rangeChoice" 
+                      [textLabel]="textLabel" 
+                      [rangeLabel]="rangeLabel" 
+                      [textHint]="textHint" 
+                      [rangeStartHint]="rangeStartHint" 
+                      [rangeEndHint]="rangeEndHint">
+        </app-listpart>
+    </div>
+
+    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12 div-border">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 buffer-padding">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12  buffer-padding">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 buffer-padding">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <button type="button"
+                        class="btn btn-default col-md-2 col-md-offset-2 str"
+                        [disabled]="available.inputItemList.completeList.length===0"
+                        (click)="moveAllLTR()">
+                    <span>
+                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="col-12 text-center">
+                <button type="button"
+                        class="btn btn-default col-md-2 col-md-offset-2"
+                        [disabled]="available.inputItemList.clickedList.length===0"
+                        (click)="moveLTR()">
+                    <span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="col-12 text-center">
+                <button type="button"
+                        class="btn btn-default col-md-2 col-md-offset-2"
+                        [disabled]="selected.inputItemList.clickedList.length===0"
+                        (click)="moveRTL()">
+                    <span>
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="col-12 text-center">
+                <button type="button"
+                        class="btn btn-default col-md-2 col-md-offset-2"
+                        [disabled]="selected.inputItemList.completeList.length===0"
+                        (click)="moveAllRTL()">
+                    <span>
+                        <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 div-border">
+        <app-listpart #selected
+                      [search]="search"
+                      [range]="range"
+                      [initiallySorted]="initiallySorted"
+                      [sort]="sort" 
+                      [sortFnAsc]="sortFnAsc"
+                      [sortFnDesc]="sortFnDesc"
+                      [allowMove]="allowMove"
+                      [addToList]=false
+                      [dataType]="dataType"
+                      [selectColor]="selectColor"
+                      [unselectColor]="unselectColor"
+                      [itemColor]="itemColor"
+                      [icon]="icon"
+                      [iconColor]="iconColor"
+                      [listName]="selectedListName"
+                      [inputData]="selectedInput"
+                      [height]="height"
+                      [addNewHint]="addNewHint" 
+                      [textChoice]="textChoice" 
+                      [rangeChoice]="rangeChoice" 
+                      [textLabel]="textLabel" 
+                      [rangeLabel]="rangeLabel" 
+                      [textHint]="textHint" 
+                      [rangeStartHint]="rangeStartHint" 
+                      [rangeEndHint]="rangeEndHint">
+        </app-listpart>
+    </div>
+</div>
